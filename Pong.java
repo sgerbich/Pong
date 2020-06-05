@@ -2,8 +2,7 @@ import java.awt.*;
 import java.awt.geom.*;
 import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+
 
 import java.util.Random;
 import java.util.Timer;
@@ -65,7 +64,7 @@ public class Pong extends Canvas
         
         g2.setFont(new Font("TimesRoman", Font.PLAIN, 30));
         g2.drawString("Player1 Score: "+ String.valueOf(p1Score), 100, 100);
-        g2.drawString("Player2 Score: "+ String.valueOf(p1Score), 700, 100);
+        g2.drawString("Player2 Score: "+ String.valueOf(p2Score), 700, 100);
 
 	}
 
