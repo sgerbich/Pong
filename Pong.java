@@ -2,6 +2,9 @@ import java.awt.*;
 import java.awt.geom.*;
 import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 import java.util.Random;
 import java.util.Timer;
 
@@ -11,6 +14,9 @@ public class Pong extends Canvas
 	Ellipse2D.Double ball;
     Rectangle paddle1;
     Rectangle paddle2;
+    int p1Score=0;
+    int p2Score=0;
+    
 	
 	public static void main( String[] args )
 	{
@@ -30,6 +36,7 @@ public class Pong extends Canvas
 		delta = new Point(-5,5);
         paddle1 = new Rectangle(50,250,20,200);
         paddle2 = new Rectangle(900,250,20,200);
+        
 		
 		Timer t = new Timer(true);
 		t.schedule( new java.util.TimerTask()
@@ -54,7 +61,11 @@ public class Pong extends Canvas
         g2.fill(paddle1);
         
         g2.setColor(Color.red);
-		g2.fill(paddle2);
+        g2.fill(paddle2);
+        
+        g2.drawString("Player1 Score: "+ String.valueOf(p1Score), 100, 100);
+        g2.drawString("Player2 Score: "+ String.valueOf(p1Score), 800, 100);
+
 	}
 
 	public void processKeyEvent(KeyEvent e)
@@ -89,9 +100,7 @@ public class Pong extends Canvas
 		// and bounce if we hit a wall
 		if ( ball.y < 0 || ball.y+20 > 700 )
 			delta.y = -delta.y;
-		if ( ball.x < 0 )
-			delta.x = -delta.x;
-			
+		
 		// check if the ball is hitting the paddle
 		if ( ball.intersects(paddle1) )
 			delta.x = -delta.x;
@@ -106,10 +115,18 @@ public class Pong extends Canvas
 		{
 			ball.x = 500;
 			ball.y = 350;
-			delta = new Point(-5,5);
+            delta = new Point(-5,5);
+            p1Score++;
 		}
 			
-		
+        if ( ball.x < 0 )
+		{
+			ball.x = 500;
+			ball.y = 350;
+            delta = new Point(-5,5);
+            p2Score++;
+		}
+			
 		
 	}
 	
