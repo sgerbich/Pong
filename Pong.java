@@ -63,8 +63,9 @@ public class Pong extends Canvas
         g2.setColor(Color.red);
         g2.fill(paddle2);
         
+        g2.setFont(new Font("TimesRoman", Font.PLAIN, 30));
         g2.drawString("Player1 Score: "+ String.valueOf(p1Score), 100, 100);
-        g2.drawString("Player2 Score: "+ String.valueOf(p1Score), 800, 100);
+        g2.drawString("Player2 Score: "+ String.valueOf(p1Score), 700, 100);
 
 	}
 
@@ -114,17 +115,17 @@ public class Pong extends Canvas
             if ( ball.x > 1000 )
 		{
 			ball.x = 500;
-			ball.y = 350;
-            delta = new Point(-5,5);
+            ball.y = 350;
             p1Score++;
+            delta = new Point(-5,5);
 		}
 			
         if ( ball.x < 0 )
 		{
 			ball.x = 500;
-			ball.y = 350;
-            delta = new Point(-5,5);
+            ball.y = 350;
             p2Score++;
+            delta = new Point(-5,5);  
 		}
 			
 		
